@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +25,9 @@ public class Vehicle {
 	private int year;
 	@Column(name="PRICE")
 	private double price;
+	@ManyToOne
+	@JoinColumn(name="EMP_ID")
+	private SalesPerson salesPerson;
 	
 	public Vehicle() {
 		super();
@@ -79,6 +84,22 @@ public class Vehicle {
 		this.price = price;
 	}
 	
+//	/**
+//	 * @return the empId
+//	 */
+//	public int getEmpId() {
+//		return empId;
+//	}
+
+
+//	/**
+//	 * @param empId the empId to set
+//	 */
+//	public void setEmpId(int empId) {
+//		this.empId = empId;
+//	}
+
+
 	public String returnVechicleDetails() {
 		return year + " " + make + " " + model + " for $" + price;
 	}

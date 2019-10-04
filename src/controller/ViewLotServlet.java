@@ -28,12 +28,18 @@ public class ViewLotServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		VehicleHelper veh = new VehicleHelper();
+		//SalesPersonHelper sph = new SalesPersonHelper();
 		
 		request.setAttribute("inventory", veh.showInventory());
+		//request.setAttribute("sales", sph.showSalesPersons());
 		
 		if (veh.showInventory().isEmpty()) {
 			request.setAttribute("inventory", " ");
 		}
+		
+//		if (sph.showSalesPersons().isEmpty()) {
+//			request.setAttribute("sales", " ");
+//		}
 		
 		getServletContext().getRequestDispatcher("/lot-view.jsp").forward(request, response);
 	}
